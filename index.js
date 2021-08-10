@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const express = require("express");
 const app = express();
 //export PORT = 5000 if any - to configure env
@@ -14,7 +15,7 @@ const courses = [
 ];
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("out of coffee");
 });
 
 app.get("/demo/courses", (req, res) => {
@@ -33,6 +34,12 @@ app.get("/demo/courses/:id", (req, res) => {
 
 //post
 app.post("/api/demo/courses", (req, res) => {
+  const schema = {
+    name: Joi.string().min(3).required(),
+  };
+  const result = Joi.valid(req.body.schema);
+  console.log(result);
+
   if (!req.body.name || req.body.name.length < 3) {
     //400 bad request
     res.status(400).send("Name is required and should be minimum 3 charcters");
