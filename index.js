@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 //export PORT = 5000 if any - to configure env
 const port = process.env.port || 3000;
