@@ -2,7 +2,11 @@ const express = require("express");
 const port = process.env.port || 3000;
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 require("dotenv/config");
+
+//middleware to json objects parsing
+app.use(express.json());
 
 //import routes
 const postsRoute = require("./routes/posts");
